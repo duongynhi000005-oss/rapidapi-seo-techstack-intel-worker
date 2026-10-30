@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Website Tech Stack Profiler, On-Page SEO Auditor & Security Headers API",
+    "version": "1.0.0",
+    "description": "Real-time Website Technology Fingerprinting (28+ CMS, JS Frameworks, Analytics, Pixels & CDNs), On-Page SEO Score (0-100), Schema.org JSON-LD Parser, and HTTP Security Header Auditor on Cloudflare Workers."
+  },
+  "servers": [
+    {
+      "url": "https://seo-techstack-intel-api.workers.dev"
+    }
+  ],
+  "paths": {
+    "/v1/audit": {
+      "get": {
+        "summary": "Full On-Page SEO, Tech Stack & Security Header Audit (GET)",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "example": "https://stripe.com" }
+          }
+        ],
+        "responses": { "200": { "description": "Complete SEO & Tech Stack Report" } }
+      },
+      "post": {
+        "summary": "Full On-Page SEO, Tech Stack & Security Header Audit (POST)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": { "type": "string", "example": "https://stripe.com" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Complete SEO & Tech Stack Report" } }
+      }
+    }
+  }
+}
